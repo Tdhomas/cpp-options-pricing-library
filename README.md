@@ -1,58 +1,59 @@
-# Object-Oriented Equity Option Pricing Library (C++)
+# C++ Options Pricing Library  
+### Black-Scholes, Cox-Ross-Rubinstein (CRR), Monte-Carlo — Object-Oriented Financial Engineering Project
 
-A compact, extensible C++ library for pricing equity options with two core engines:
+This project implements a modular pricing library for equity options in modern C++.  
+It was developed as part of a university financial engineering course focused on derivative pricing models and quantitative software design.
 
-1) **Black–Scholes–Merton (BSM)**: closed-form pricing and Delta for European vanilla and digital options.  
-2) **Cox–Ross–Rubinstein (CRR)**: binomial tree with backward induction, optional closed-form at the root, and natural support for early exercise.
-
-The codebase is structured with clear abstraction layers to make it easy to add new products or pricers.
-
----
-
-## Features
-
-- **Products**
-  - European **Vanilla**: `Call`, `Put`
-  - **Digital**: `DigitalCall`, `DigitalPut`
-  - (Optional extensions) **American** and **Asian** scaffolding if you choose to include them
-- **Pricers**
-  - `BlackScholesPricer` for European Vanilla & Digitals, with Delta
-  - `CRRPricer` for European options on a recombining binomial tree
-- **Data Structures**
-  - `BinaryTree<T>` for storing node data and visualizing trees
-- **Model Checks**
-  - CRR no-arbitrage guard: `D < R < U`
+The objective is to bridge **theory and practice**: taking mathematical pricing frameworks and transforming them into clean, extensible code architectures suitable for production-style research.
 
 ---
 
-## Mathematical Overview
+## 📌 Learning and Project Objectives
 
-### Black–Scholes–Merton (European)
-Let \(S\) be spot, \(K\) strike, \(r\) risk-free rate, \(\sigma\) volatility, \(T\) time to expiry.
+### 1️⃣ Introduction to Financial Options  
+Fundamentals of European and American options, payoff functions, arbitrage-free valuation, and market usage.
 
-\[
-d_1 = \frac{\ln(S/K) + \left(r + \frac{1}{2}\sigma^2\right)T}{\sigma \sqrt{T}}, \quad
-d_2 = d_1 - \sigma \sqrt{T}
-\]
+### 2️⃣ C++ Programming Foundations for Quants  
+Application of:
+- Object-oriented programming  
+- Inheritance and polymorphism  
+- Abstract base classes for product hierarchies  
+- Clean interfaces and encapsulation  
 
-- **Call price**: \(C = S\,N(d_1) - K e^{-rT} N(d_2)\)  
-- **Put price**: \(P = K e^{-rT} N(-d_2) - S\,N(-d_1)\)  
-- **Delta (Call)**: \(\Delta = N(d_1)\), **Delta (Put)**: \(\Delta = N(d_1) - 1\)
+### 3️⃣ Black–Scholes–Merton Pricer  
+Analytical pricing for European options including:
+- Closed-form price
+- Delta (sensitivity to underlying price)
+- Support for vanilla and digital payoffs
 
-> Implementation uses `std::erfc` to evaluate the standard normal CDF.
+The model uses the standard normal CDF via `std::erfc`.
 
-### CRR Binomial Tree
-At time step \(n\) and node \(i\):
-\[
-S(n,i) = S_0 (1+U)^i (1+D)^{n-i}, \quad q = \frac{R - D}{U - D}, \quad R = \text{per-step risk-free growth}
-\]
+### 4️⃣ Cox-Ross-Rubinstein (CRR) Binomial Model  
+Backward-induction algorithm over a recombining tree for European options.
+- Includes no-arbitrage validation (`D < R < U`)
+- Optional explicit closed-form binomial solution at the root
+- Tree stored & visualized using a reusable `BinaryTree<T>` template
 
-Backward induction:
-\[
-H(n,i) = \frac{q\,H(n+1,i+1) + (1-q)\,H(n+1,i)}{1+R}
-\]
+### 5️⃣ Monte-Carlo Simulations  
+Pricing by simulating stochastic asset paths.
+- Statistical estimation of fair value
+- Convergence testing
+- Comparison vs. analytic pricing
 
-Closed-form at the root (optional):
-\[
-H(0,0) = \frac{1}{(1+R)^N}\sum_{i=0}^{N} \binom{N}{i} q^i (1-q)^{N-i}\, h\!\big(S(N,i)\big)
-\]
+### 6️⃣ Advanced Concepts  
+Extensions for:
+- Path-dependent options (Asian structure in place)
+- Early exercise support (American option architecture)
+- Computational efficiency considerations
+
+---
+
+## ✅ Features Summary
+
+| Category | Capabilities |
+|--------|--------------|
+| Products | Call, Put, Digital Calls/Puts (European) |
+| Pricing Engines | BSM, CRR Tree, Monte-Carlo |
+| Greeks | Delta (BSM) |
+| Data Structures | Generic binary tree with printer |
+| Model Risk Controls | Arbitrage condition checks |
