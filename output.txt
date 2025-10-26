@@ -1,0 +1,91 @@
+European options 1
+BlackScholesPricer price=3.69676, delta=0.412438
+BlackScholesPricer price=7.70175, delta=-0.587562
+Calling CRR pricer with depth=150
+CRR pricer computed price=3.69936
+CRR pricer explicit formula price=3.69936
+Calling CRR pricer with depth=150
+CRR pricer computed price=7.70434
+CRR pricer explicit formula
+price=7.70434
+*************************************************************
+Binary Tree
+
+0
+0 1
+0 0 0
+0 0 0 0
+0
+0 1
+0 0 0
+0 0 0 0
+0 0 0 0 0
+0
+0 1
+0 0 0
+0 0 0 0
+0
+0 0
+0 3.14 0
+0
+0 0
+0 3.14 0
+0 0 0
+0 0 0 0
+0
+0 0
+0 3.14 0
+0 0 0
+0
+0 0
+8 0 0 0
+0 0 0 0
+0
+0 0
+0 0 0
+0 0 0 0 0
+
+*************************************************************
+European options 2
+
+BlackScholesPricer price=0.354849, delta=0.412438
+BlackScholesPricer price=0.635201, delta=-0.587562
+
+Calling CRR pricer with depth=150
+
+CRR pricer computed price=0.338217
+CRR pricer explicit formula price=0.338217
+
+Calling CRR pricer with depth=150
+
+CRR pricer computed price=0.651833
+CRR pricer explicit formula price=0.651833
+
+*************************************************************
+
+nb samples: 7.97214e+06
+price: 3.70083
+
+nb samples: 1.12991e+07
+price: 7.69818
+
+nb samples: 34670
+price: 0.355556
+
+nb samples: 34740
+price: 0.632902
+
+nb samples: 10
+price: 0
+
+nb samples: 6.24015e+06
+price: 6.30163
+
+price: 3.70384
+price: 7.70882
+price: 0.346094
+price: 0.643956
+price: 3.70384
+price: 7.84874
+
+

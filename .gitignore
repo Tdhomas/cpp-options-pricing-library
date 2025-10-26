@@ -1,0 +1,49 @@
+# ---- Build Artifacts ----
+build/
+build-*/
+out/
+bin/
+lib/
+*.o
+*.obj
+*.a
+*.so
+*.dll
+*.dylib
+*.exe
+
+# ---- CMake ----
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+Makefile
+compile_commands.json
+
+# ---- IDE & Editor Settings ----
+.vscode/
+.idea/
+.ipynb_checkpoints/
+*.code-workspace
+
+# ---- Debug / Profiling / Coverage ----
+*.log
+*.tmp
+*.pid
+*.gcda
+*.gcno
+*.gcov
+*.profraw
+*.profdata
+
+# ---- OS-generated ----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- Test output / Temp files ----
+Testing/
+tests/**/build/
+tests/**/out/
+*.swp
+*.swo
